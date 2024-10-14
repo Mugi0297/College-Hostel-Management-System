@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Hostel Management System</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the College Hostel Management System</h1>
+        <a href="{% url 'student_list' %}" class="btn btn-primary">Add & View Students</a>
+        <a href="{% url 'meal_count' %}" class="btn btn-warning">Meal Count</a>
+        <a href="{% url 'view_meal_counts' %}" class="btn btn-warning">View Meal Count</a>
+        <a href="{% url 'mark_attendance' %}" class="btn btn-info">Mark Attendance</a>
+        <a href="{% url 'view_attendance' %}" class="btn btn-info">View Attendance</a>
+        <a href="{% url 'request_permission' %}" class="btn btn-secondary">Request Permission</a>
+        <a href="{% url 'view_permission_requests' %}" class="btn btn-secondary">View Permission Request</a>
+        <a href="{% url 'report_grievance' %}" class="btn btn-success">Report Grievance</a>
+        <a href="{% url 'view_grievances' %}" class="btn btn-success">View Grievances</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Mark Attendance</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Mark Attendance</h2>
+         <br>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="date" class="form-control" required>
+            </div>
+             <br>
+            <div class="form-group">
+                <label for="time_slot">Time Slot:</label>
+                <select name="time_slot" class="form-control" required>
+                    <option value="Morning">Morning</option>
+                    <option value="Evening">Evening</option>
+                </select>
+            </div>
+             <br>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select name="status" class="form-control" required>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </div>
+             <br>
+            <div class="form-group">
+                <label>Select Students:</label><br>
+                {% for student in students %}
+                    <input type="checkbox" name="student_ids" value="{{ student.id }}"> {{ student.name }}<br>
+                {% endfor %}
+            </div>
+             <br>
+            <button type="submit" class="btn btn-success">Submit Attendance</button>
+        </form>
+    </div>
+</body>
+</html>

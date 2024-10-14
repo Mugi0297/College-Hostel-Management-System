@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>View Grievances</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Reported Grievances</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Description</th>
+                    <th>Date Reported</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grievance in grievances %}
+                <tr>
+                    <td>{{ grievance.student.name }}</td>
+                    <td>{{ grievance.description }}</td>
+                    <td>{{ grievance.date_reported }}</td>
+                    <td>{{ grievance.status }}</td>
+                    <td>
+                        {% if grievance.status == 'Pending' %}
+                        <a href="{% url 'update_grievance_status' grievance.id %}" class="btn btn-primary">Update Status</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No grievances reported.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

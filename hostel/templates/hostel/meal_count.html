@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Submit Meal Count</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Submit Meal Count</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="date" class="form-control" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="meal_type">Meal Type:</label>
+                <select name="meal_type" class="form-control" required>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="student_id">Select Student:</label>
+                <select name="student_id" class="form-control" required>
+                    {% for student in students %}
+                    <option value="{{ student.id }}">{{ student.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="count">Count:</label>
+                <input type="number" name="count" class="form-control" required min="1">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit Meal Count</button>
+        </form>
+        <a href="{% url 'view_meal_counts' %}" class="btn btn-secondary mt-3">View Meal Counts</a>
+    </div>
+</body>
+</html>

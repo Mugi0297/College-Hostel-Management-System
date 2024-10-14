@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Request Permission</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Request Permission</h2>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="student_id">Select Student:</label>
+                <select name="student_id" class="form-control" required>
+                    <option value="">Select a student</option>
+                    {% for student in students %}
+                        <option value="{{ student.id }}">{{ student.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="reason">Reason:</label>
+                <textarea name="reason" class="form-control" required></textarea>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success">Submit Request</button>
+        </form>
+    </div>
+</body>
+</html>

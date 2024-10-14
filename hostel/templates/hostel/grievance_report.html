@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Grievance Report</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Grievance Report</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Description</th>
+                    <th>Date Submitted</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grievance in grievances %}
+                <tr>
+                    <td>{{ grievance.student.name }}</td>
+                    <td>{{ grievance.description }}</td>
+                    <td>{{ grievance.date_submitted }}</td>
+                    <td>{{ grievance.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

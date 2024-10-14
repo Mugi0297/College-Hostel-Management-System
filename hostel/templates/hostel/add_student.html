@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Add Student</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Student</h2>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="roll_number">Roll Number:</label>
+                <input type="text" name="roll_number" class="form-control" required>
+            </div>
+             <br>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+             <br>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select name="gender" class="form-control" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+             <br>
+            <div class="form-group">
+                <label for="room_number">Room Number:</label>
+                <input type="text" name="room_number" class="form-control" required>
+            </div>
+             <br>
+            <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+    </div>
+</body>
+</html>
